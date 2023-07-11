@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/Product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -7,6 +10,13 @@ part 'order_cubit.freezed.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(const CartState.initial(data: CartStateData()));
+
+  Future<Product> readJson() async {
+  final String file = await rootBundle.loadString('assets/shoes.json');
+  final data = await json.decode(file);
+  var product = Product.fromJson(data);
+  return product;
+}
 
   void getProduct() async {
     final product = await readJson();

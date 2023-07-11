@@ -66,11 +66,3 @@ class Shoes {
     return data;
   }
 }
-Future<Product> readJson() async {
-  final String file = await rootBundle.loadString('assets/shoes.json');
-  final data = await json.decode(file);
-  var product = Product.fromJson(data);
-  return product;
-}
-
-Future<Product> product = readJson();
