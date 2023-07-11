@@ -184,7 +184,7 @@ class _MainAppState extends State<MainApp> {
                               builder: (context, state) {
                                 final cart = state.data?.cart ?? [];
                                 return cart.isEmpty
-                                    ? SizedBox()
+                                    ? Text("Your cart is emty", style: TextStyle(fontSize: 15),)
                                     : ListView.separated(
                                         shrinkWrap: true,
                                         separatorBuilder: (context, index) =>
